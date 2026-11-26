@@ -2,7 +2,7 @@
 
 This is an Active Directory home lab built in VirtualBox for hands-on practice of AD administration and ticketing. It uses the domain **kerneltech.internal**, based on a fictional company, Kernel Technologies.
 
-![Lab structure](images/env-lab_structure.png)
+![Lab structure](Images/env-lab_structure.png)
 
 ## Tools and Software
 
@@ -118,15 +118,15 @@ Three shared folders are hosted on DC-01. Each one gives Read permission to the 
 
 **DHCP address leases:** both workstations hold addresses from the 172.18.0.20–100 scope.
 
-![DHCP address leases](images/env-dhcp_server.png)
+![DHCP address leases](Images/env-dhcp_server.png)
 
 **DNS Manager, forward lookup zone kerneltech.internal:** host records for the domain controller and both workstations.
 
-![DNS Manager](images/env-dns_manager.png)
+![DNS Manager](Images/env-dns_manager.png)
 
 **Active Directory Users and Computers:** the OU structure.
 
-![OU structure](images/env-ou_structure.png)
+![OU structure](Images/env-ou_structure.png)
 
 
 
