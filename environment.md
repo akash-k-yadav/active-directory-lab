@@ -85,34 +85,36 @@ All users are fictional.
 
 ## Groups
 
-Users are organised with global groups per department, and shared-folder access is controlled through domain local groups.
+Users are placed in global groups by department. Each department group is then made a member of the domain local group for its shared folder. This follows the AGDLP pattern: Accounts go into Global groups, global groups go into Domain Local groups, and the domain local groups get the Permissions.
 
-**Department groups** (Groups/Department Groups)
+| Group | Scope | Description | Member of |
+|---|---|---|---|
+| GG_IT | Global | All IT department staff | DL_IT_SHARES |
+| GG_HR | Global | All HR department staff | DL_HR_SHARES |
+| GG_SALES | Global | All Sales department staff | DL_SALES_SHARES |
+| GG_IT_HELPDESK | Global | Helpdesk technicians | |
+
+These groups are in the Groups/Department Groups OU.
+
+## Resource Groups
 
 | Group | Scope | Description |
 |---|---|---|
-| GG_IT | Global | All IT department staff |
-| GG_HR | Global | All HR department staff |
-| GG_SALES | Global | All Sales department staff |
-| GG_IT_HELPDESK | Global | Helpdesk technicians |
+| DL_IT_SHARES | Domain Local | Access to the IT shared folder |
+| DL_HR_SHARES | Domain Local | Access to the HR shared folder |
+| DL_SALES_SHARES | Domain Local | Access to the Sales shared folder |
 
-**Resource groups** (Groups/Resource Groups)
-
-| Group | Scope | Description |
-|---|---|---|
-| DL_IT_SHARE | Domain Local | Access to the IT shared folder |
-| DL_HR_SHARE | Domain Local | Access to the HR shared folder |
-| DL_SALES_SHARE | Domain Local | Access to the Sales shared folder |
+These groups are in the Groups/Resource Groups OU. Permissions on each shared folder are given to its domain local group, never to individual users.
 
 ## File Shares
 
-Three shared folders are hosted on DC-01. Each one gives Read permission to the matching domain local group.
+Three shared folders are hosted on DC-01. Each gives Read access to the matching domain local group, set at both the share level and the NTFS level.
 
-| Share | Hosted on | Permission | Group |
-|---|---|---|---|
-| IT_SHARES | DC-01 | Read | DL_IT_SHARE |
-| HR_SHARES | DC-01 | Read | DL_HR_SHARE |
-| SALES_SHARES | DC-01 | Read | DL_SALES_SHARE |
+| Share | Hosted on | Share permission | NTFS permission | Group |
+|---|---|---|---|---|
+| IT_SHARES | DC-01 | Read | Read | DL_IT_SHARES |
+| HR_SHARES | DC-01 | Read | Read | DL_HR_SHARES |
+| SALES_SHARES | DC-01 | Read | Read | DL_SALES_SHARES |
 
 ## Screenshots
 
@@ -127,7 +129,3 @@ Three shared folders are hosted on DC-01. Each one gives Read permission to the 
 **Active Directory Users and Computers:** the OU structure.
 
 ![OU structure](Images/env-ou_structure.png)
-
-
-
-
